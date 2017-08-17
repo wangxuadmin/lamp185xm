@@ -13,7 +13,7 @@
     <link rel="icon" type="image/png" href="/admins/assets/i/favicon.png">
     <link rel="apple-touch-icon-precomposed" href="assets/i/app-icon72x72@2x.png">
     <meta name="apple-mobile-web-app-title" content="Amaze UI" />
-    <script src="/admins/assets/js/echarts.min.js"></script>
+    {{--<script src="/admins/assets/js/echarts.min.js"></script>--}}
     <link rel="stylesheet" href="/admins/assets/css/amazeui.min.css" />
     <link rel="stylesheet" href="/admins/assets/css/amazeui.datatables.min.css" />
     <link rel="stylesheet" href="/admins/assets/css/app.css">
@@ -170,19 +170,19 @@
 
         </header>
         <!-- 风格切换 -->
-        <div class="tpl-skiner">
-            <div class="tpl-skiner-toggle am-icon-cog">
-            </div>
-            <div class="tpl-skiner-content">
-                <div class="tpl-skiner-content-title">
-                    选择主题
-                </div>
-                <div class="tpl-skiner-content-bar">
-                    <span class="skiner-color skiner-white" data-color="theme-white"></span>
-                    <span class="skiner-color skiner-black" data-color="theme-black"></span>
-                </div>
-            </div>
-        </div>
+        {{--<div class="tpl-skiner">--}}
+            {{--<div class="tpl-skiner-toggle am-icon-cog">--}}
+            {{--</div>--}}
+            {{--<div class="tpl-skiner-content">--}}
+                {{--<div class="tpl-skiner-content-title">--}}
+                    {{--选择主题--}}
+                {{--</div>--}}
+                {{--<div class="tpl-skiner-content-bar">--}}
+                    {{--<span class="skiner-color skiner-white" data-color="theme-white"></span>--}}
+                    {{--<span class="skiner-color skiner-black" data-color="theme-black"></span>--}}
+                {{--</div>--}}
+            {{--</div>--}}
+        {{--</div>--}}
         <!-- 侧边导航栏 -->
         <div class="left-sidebar">
             <!-- 用户信息 -->
@@ -209,7 +209,7 @@
                 </li>
 
 
-
+                {{--后台用户模块--}}
                 <li class="sidebar-nav-link">
                     <a href="javascript:;" class="sidebar-nav-sub-title">
                         <i class="am-icon-table sidebar-nav-link-logo"></i> 用户模块
@@ -225,6 +225,28 @@
                         <li class="sidebar-nav-link">
                             <a href="table-list-img.html">
                                 <span class="am-icon-angle-right sidebar-nav-link-logo"></span> 用户列表
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+
+
+                {{--后台分类模块--}}
+                <li class="sidebar-nav-link">
+                    <a href="javascript:;" class="sidebar-nav-sub-title">
+                        <i class="am-icon-table sidebar-nav-link-logo"></i> 分类模块
+                        <span class="am-icon-chevron-down am-fr am-margin-right-sm sidebar-nav-sub-ico"></span>
+                    </a>
+                    <ul class="sidebar-nav sidebar-nav-sub">
+                        <li class="sidebar-nav-link">
+                            <a href="{{url('admin/cate/create')}}">
+                                <span class="am-icon-angle-right sidebar-nav-link-logo"></span> 添加分类
+                            </a>
+                        </li>
+
+                        <li class="sidebar-nav-link">
+                            <a href="{{url('admin/cate')}}">
+                                <span class="am-icon-angle-right sidebar-nav-link-logo"></span> 分类列表
                             </a>
                         </li>
                     </ul>
@@ -247,6 +269,7 @@
     <script src="/admins/assets/js/amazeui.datatables.min.js"></script>
     <script src="/admins/assets/js/dataTables.responsive.min.js"></script>
     <script src="/admins/assets/js/app.js"></script>
+    <script type="text/javascript" src="/layer/layer.js"></script>
 
 </body>
 

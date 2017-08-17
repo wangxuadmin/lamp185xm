@@ -43,6 +43,9 @@ Route::group(['prefix'=>'admin','namespace'=>'Admins'], function(){
 //    //商品分类模块
 //    Route::resource('goodscategory', 'GoodsCategoryController');
 
+    //网站配置
+      Route::resource('config','ConfigController');
+      Route::get('putfile','ConfigController@putFile');
 });
 
 

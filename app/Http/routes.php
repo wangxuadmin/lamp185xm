@@ -11,16 +11,22 @@
 |
 */
 
-Route::get('/', function () {
+
+/*Route::get('/', function () {
     return view('welcome');
-});
+});*/
+// 前台首页
+/*Route::get('/',function(){
 
+	return view('index');
+});*/
 
+Route::get('home/index','homes\IndexController@index');
 
 /**
  * 后台路由组
  */
-Route::group(['prefix'=>'admin','namespace'=>'Admins'], function(){
+// Route::group(['prefix'=>'admin','namespace'=>'Admins'], function(){
     //后台首页路由
     Route::get('index', 'IndexController@index');
 //    //退出登录
@@ -43,6 +49,7 @@ Route::group(['prefix'=>'admin','namespace'=>'Admins'], function(){
 //    //商品分类模块
 //    Route::resource('goodscategory', 'GoodsCategoryController');
 
-});
+// });
+
 
 

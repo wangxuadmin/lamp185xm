@@ -217,6 +217,41 @@
                     </ul>
                 </li>
 
+                {{--网站配置--}}
+                <li class="sidebar-nav-link">
+                    <a href="javascript:;" class="sidebar-nav-sub-title">
+                        <i class="am-icon-table sidebar-nav-link-logo"></i> 网站配置模块
+                        <span class="am-icon-chevron-down am-fr am-margin-right-sm sidebar-nav-sub-ico"></span>
+                    </a>
+                    <ul class="sidebar-nav sidebar-nav-sub">
+                        <li class="sidebar-nav-link">
+                            <a href="{{url('admin/config/create')}}">
+                                <span class="am-icon-angle-right sidebar-nav-link-logo"></span> 添加配置
+                            </a>
+                        </li>
+
+                        <li class="sidebar-nav-link">
+                            <a href="{{url('admin/config')}}">
+                                <span class="am-icon-angle-right sidebar-nav-link-logo"></span> 配置列表
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+
+                {{--友情链接--}}
+                <li class="sidebar-nav-link">
+                    <a href="javascript:;" class="sidebar-nav-sub-title">
+                        <i class="am-icon-table sidebar-nav-link-logo"></i> 友情链接
+                        <span class="am-icon-chevron-down am-fr am-margin-right-sm sidebar-nav-sub-ico"></span>
+                    </a>
+                    <ul class="sidebar-nav sidebar-nav-sub">
+                        <li class="sidebar-nav-link">
+                            <a href="{{url('admin/links/create')}}">
+                                <span class="am-icon-angle-right sidebar-nav-link-logo"></span> 添加
+                            </a>
+                        </li>
+                    </ul>
+                </li>
 
                 {{--后台分类模块--}}
                 <li class="sidebar-nav-link">
@@ -239,7 +274,6 @@
                     </ul>
                 </li>
 
-
                 {{--后台文章模块--}}
                 <li class="sidebar-nav-link">
                     <a href="javascript:;" class="sidebar-nav-sub-title">
@@ -256,11 +290,15 @@
                         <li class="sidebar-nav-link">
                             <a href="{{url('admin/article')}}">
                                 <span class="am-icon-angle-right sidebar-nav-link-logo"></span> 文章列表
+=======
+                        <li class="sidebar-nav-link">
+                            <a href="{{url('admin/links')}}">
+                                <span class="am-icon-angle-right sidebar-nav-link-logo"></span> 列表
+>>>>>>> origin/ale
                             </a>
                         </li>
                     </ul>
                 </li>
-
 
             </ul>
         </div>
@@ -278,7 +316,11 @@
     <script src="/admins/assets/js/amazeui.datatables.min.js"></script>
     <script src="/admins/assets/js/dataTables.responsive.min.js"></script>
     <script src="/admins/assets/js/app.js"></script>
+<<<<<<< HEAD
     <script type="text/javascript" src="/layer/layer.js"></script>
+=======
+    <script src="/layer/layer.js"></script>
+>>>>>>> origin/ale
 
 </body>
 

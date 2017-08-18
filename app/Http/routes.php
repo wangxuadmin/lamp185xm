@@ -94,15 +94,16 @@ Route::group(['prefix'=>'admin','namespace'=>'Admins'],function(){
     Route::post('cate/changeorder','CateController@changeOrder');//分类排序
     Route::post('cate/showart','CateController@showArt');//显示当前分类下文章
 
+
 //   文章模块
     Route::resource('article','ArticleController');
 //    Route::post('upload','ArticleController@fileUpload');
 //
 //    友情链接
-//    Route::resource('link','FriendController');
+    Route::resource('link','FriendController');
 //
 //   网站配置
-//    Route::resource('config','ConfigController');
+    Route::resource('config','ConfigController');
 //    Route::post('config/changecontent','ConfigController@changeContent');
 //
 //    Route::get('putfile','ConfigController@putFile');
@@ -117,6 +118,7 @@ Route::group(['prefix'=>'admin','namespace'=>'Admins'],function(){
 //    权限管理
 //
 //    Route::resource('permission','PermissionController');
+
 });
 
 

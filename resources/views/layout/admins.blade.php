@@ -11,7 +11,7 @@
     <meta name="renderer" content="webkit">
     <meta http-equiv="Cache-Control" content="no-siteapp" />
     <link rel="icon" type="image/png" href="/admins/assets/i/favicon.png">
-    <link rel="apple-touch-icon-precomposed" href="assets/i/app-icon72x72@2x.png">
+    <link rel="apple-touch-icon-precomposed" href="./admins/assets/i/app-icon72x72@2x.png">
     <meta name="apple-mobile-web-app-title" content="Amaze UI" />
     {{--<script src="/admins/assets/js/echarts.min.js"></script>--}}
     <link rel="stylesheet" href="/admins/assets/css/amazeui.min.css" />
@@ -250,6 +250,11 @@
                                 <span class="am-icon-angle-right sidebar-nav-link-logo"></span> 添加
                             </a>
                         </li>
+                        <li class="sidebar-nav-link">
+                            <a href="{{url('admin/links')}}">
+                                <span class="am-icon-angle-right sidebar-nav-link-logo"></span> 列表
+                            </a>
+                        </li>
                     </ul>
                 </li>
 
@@ -290,11 +295,7 @@
                         <li class="sidebar-nav-link">
                             <a href="{{url('admin/article')}}">
                                 <span class="am-icon-angle-right sidebar-nav-link-logo"></span> 文章列表
-=======
-                        <li class="sidebar-nav-link">
-                            <a href="{{url('admin/links')}}">
-                                <span class="am-icon-angle-right sidebar-nav-link-logo"></span> 列表
->>>>>>> origin/ale
+
                             </a>
                         </li>
                     </ul>

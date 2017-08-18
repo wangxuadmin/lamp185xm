@@ -58,9 +58,7 @@
                                         <label class="am-u-sm-3 am-form-label" for="user-weibo">封面图 <span class="tpl-form-line-small-title">Images</span></label>
                                         <div class="am-u-sm-9">
                                             <div class="am-form-group am-form-file">
-                                                <div class="tpl-form-file-img">
-                                                    <img alt="" src="assets/img/a5.png">
-                                                </div>
+
                                                 <button class="am-btn am-btn-danger am-btn-sm" type="button">
     <i class="am-icon-cloud-upload"></i> 添加封面图片</button>
                                                 <input type="file" multiple="true" id="doc-form-file"name="conf_image"value="{{$config->conf_image}}">

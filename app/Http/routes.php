@@ -1,60 +1,40 @@
 <?php
 
-/*
-|--------------------------------------------------------------------------
-| Application Routes
-|--------------------------------------------------------------------------
-|
-| Here is where you can register all of the routes for an application.
-| It's a breeze. Simply tell Laravel the URIs it should respond to
-| and give it the controller to call when that URI is requested.
-|
-*/
 
-Route::get('/', function () {
-    return view('welcome');
+/**
+ *      前台路由组
+ */
+
+Route::group(['namespace'=>'Homes'],function(){
+    //首页路由
+    Route::get('/','IndexController@index');
+    //列表页路由
+    Route::get('/cate/{id}','IndexController@cate');
+    //详情页路由
+    Route::get('/a/{id}','IndexController@article');
 });
 
-//
-//
-//Route::get('back',function(){
-//    return view('errors.304');
-//});
-//前台路由
-//Route::group(['namespace'=>'Home'],function(){
-//    首页路由
-//    Route::get('/','IndexController@index');
-//   列表页路由
-//    Route::get('/cate/{id}','IndexController@cate');
-//    详情页路由
-//    Route::get('/a/{id}','IndexController@article');
-//});
-//
 //注册
 //手机号的
 //Route::get('register','RegisterController@mobileRegister');
 //Route::post('sendcode','RegisterController@sendCode');
 //Route::post('register','RegisterController@doRegister');
-//
+
 //邮箱的
 //Route::get('emailreg','RegisterController@emailRegister');
 //Route::post('emailreg','RegisterController@doemailRegister');
-//
+
 //邮箱激活
 //Route::get('active','RegisterController@active');
-//
-//
+
 //忘记密码
 //Route::get('forget','RegisterController@forget');
 //Route::post('forget','RegisterController@doforget');
-//
+
 //找回密码（重置密码）
 //Route::get('reset','RegisterController@reset');
 //Route::post('reset','RegisterController@doreset');
-//
-//
-//
-//
+
 //Route::get('test','Admin\LoginController@test');
 //后台的登录页面路由
 //Route::get('admin/login','Admin\LoginController@login');
@@ -62,18 +42,25 @@ Route::get('/', function () {
 //Route::get('admin/yzm','Admin\LoginController@yzm');
 //组件验证码路由
 //Route::get('/code/captcha/{tmp}', 'Admin\LoginController@captcha');
-//
+
 //后台用户登录的业务逻辑路由
 //Route::post('admin/login','Admin\LoginController@dologin');
-//
+
 //加密
 //Route::get('admin/crypt','Admin\LoginController@crypt');
-//
-////Route::group(['prefix'=>'admin','namespace'=>'Admin','middleware'=>'hasrole'],function(){
+
+
+
+/**
+ * 后台路由组
+ */
+
+//Route::group(['prefix'=>'admin','namespace'=>'Admin','middleware'=>'hasrole'],function(){
 Route::group(['prefix'=>'admin','namespace'=>'Admins'],function(){
-//    //后台首页路由
+    //后台首页路由
     Route::get('index','IndexController@index');
 //    Route::get('info','IndexController@info');
+
 //    //退出登录
 //    Route::get('quit','IndexController@quit');
 //    //修改密码
@@ -119,7 +106,8 @@ Route::group(['prefix'=>'admin','namespace'=>'Admins'],function(){
 //
 //    Route::resource('permission','PermissionController');
 
-});
+ });
+
 
 
 

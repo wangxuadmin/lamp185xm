@@ -1,12 +1,12 @@
 @extends('layout.admins')
 
-@section('title','分类添加页')
+@section('title','文章添加页')
 
 @section('content')
     <div class="am-u-sm-12 am-u-md-12 am-u-lg-12">
         <div class="widget am-cf">
             <div class="widget-head am-cf">
-                <div class="widget-title am-fl">分类添加</div>
+                <div class="widget-title am-fl">文章添加</div>
                 <div class="widget-function am-fr">
                     <a class="am-icon-cog" href="javascript:;"></a>
                 </div>
@@ -39,7 +39,7 @@
 
                                 <option value="0">==顶级分类==</option>
                                 @foreach($cate_one as $k=>$v)
-                                    <option value="{{$v->cate_id}}">{{$v->cate_name}}</option>
+                                    <option value="{{$v->cate_id}}">{{$v->cate_names}}</option>
                                 @endforeach
 
                             </select>

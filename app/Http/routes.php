@@ -46,6 +46,9 @@ Route::group(['prefix'=>'admin','namespace'=>'Admins'], function(){
     //网站配置
       Route::resource('config','ConfigController');
       Route::get('putfile','ConfigController@putFile');
+      //友情链接
+      Route::resource('links','LinksController');
+
 });
 
 

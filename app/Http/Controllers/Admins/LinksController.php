@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
+use App\Http\Model\Links;
 
 class LinksController extends Controller
 {
@@ -17,6 +18,8 @@ class LinksController extends Controller
     public function index()
     {
         //
+         $links = links::orderBy('links_id','asc')->get();
+        return view('links.list',compact('links'));
     }
 
     /**
@@ -27,7 +30,7 @@ class LinksController extends Controller
     public function create()
     {
         //
-        return view('')
+        return view('links.add');
     }
 
     /**
@@ -39,6 +42,19 @@ class LinksController extends Controller
     public function store(Request $request)
     {
         //
+          $input = $request->except('_token');
+        
+         $re  = links::create($input);
+         
+        if($re){
+            //$this->putFile();
+            return redirect('admin/links');
+
+        }else{
+
+            return back()->with('msg','添加失败');
+           
+    }
     }
 
     /**

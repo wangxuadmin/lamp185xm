@@ -2,13 +2,45 @@
 
 namespace App\Http\Controllers\Admins;
 
+use App\Http\Model\Cate;
 use Illuminate\Http\Request;
 
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Input;
 
 class ArticleController extends Controller
 {
+    /**
+     *      文件上传
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function fileUpload()
+    {
+//        return 111;
+
+        $file = Input::file('file_upload');
+//        dd($file);
+
+        if($file->isValid()){
+            $entension = $file->getClientOriginalExtension();//上传文件的后缀名
+            //保存在服务器上的新文件名
+            $newName = date('YmdHis').mt_rand(1000,9999).'.'.$entension;
+//            将文件从临时目录移动到制定目录
+            $path = $file->move(public_path().'/uploads',$newName);
+
+//            将上传文件保存到七牛云上
+//            $disk = \Storage::disk('qiniu');
+//            \Storage::disk('qiniu')->writeStream('uploads/'.$newName, fopen($file->getRealPath(), 'r'));
+
+//            OSS上传
+            $filepath = 'uploads/'.$newName;
+//            OSS::upload($filepath,$file->getRealPath());
+
+            return  $filepath;
+        }
+    }
     /**
      * Display a listing of the resource.
      *
@@ -22,11 +54,12 @@ class ArticleController extends Controller
     /**
      * Show the form for creating a new resource.
      *
-     * @return \Illuminate\Http\Response
+     * @return 文章添加页
      */
     public function create()
     {
-        //
+        $cates = (new cate())->trees();
+        return view('admins.article.add',compact('cates'));
     }
 
     /**

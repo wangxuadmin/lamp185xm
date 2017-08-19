@@ -30,7 +30,7 @@
 
             <div class="widget-body am-fr">
 
-                <form action="{{url('admin/cate')}}" method="post" class="am-form tpl-form-line-form" >
+                <form action="{{url('admin/upload')}}" method="post" id="art_form" enctype="multipart/form-data" class="am-form tpl-form-line-form" >
 
                     <div class="am-form-group">
                         <label class="am-u-sm-3 am-form-label" for="user-phone">父类</label>
@@ -38,7 +38,7 @@
                             <select name="cate_pid" style="display: none;" data-am-selected="{searchBox: 1}">
 
                                 <option value="0">==顶级分类==</option>
-                                @foreach($cate_one as $k=>$v)
+                                @foreach($cates as $k=>$v)
                                     <option value="{{$v->cate_id}}">{{$v->cate_names}}</option>
                                 @endforeach
 
@@ -47,10 +47,122 @@
                     </div>
 
                     <div class="am-form-group">
-                        <label class="am-u-sm-3 am-form-label" for="user-name">添加子分类</label>
+                        <label class="am-u-sm-3 am-form-label" for="user-name">文章标题：</label>
                         <div class="am-u-sm-9">
-                            <input type="text" placeholder="子分类" id="user-name" name="cate_name" class="tpl-form-input">
-                            <small>必须填写。</small>
+                            <input type="text" placeholder="文章标题" id="user-name" name="art_title" class="tpl-form-input">
+
+                        </div>
+                    </div>
+
+                    <div class="am-form-group">
+                        <label class="am-u-sm-3 am-form-label" for="user-name">文章编辑：</label>
+                        <div class="am-u-sm-9">
+                            <input type="text" placeholder="文章编辑" id="user-name" name="art_editor" class="tpl-form-input">
+
+                        </div>
+                    </div>
+
+                    <div class="am-form-group">
+                        <label class="am-u-sm-3 am-form-label" for="user-name">缩略图：</label>
+                        <div class="am-u-sm-9">
+                            <input type="text" size="50" name="art_thumb" placeholder="缩略图" id="art_thumb">
+                            <input id="file_upload" name="file_upload" type="file" multiple="true">
+                            <p><img id="img1" alt="上传后显示图片"  style="max-width:350px;max-height:100px;" /></p>
+
+                            <script type="text/javascript">
+                                $(function () {
+                                    $("#file_upload").change(function () {
+                                        uploadImage();
+                                    });
+                                });
+
+                                function uploadImage() {
+//                            判断是否有选择上传文件
+                                    var imgPath = $("#file_upload").val();
+
+                                    if (imgPath == "") {
+                                        alert("请选择上传图片！");
+                                        return;
+                                    }
+                                    //判断上传文件的后缀名
+                                    var strExtension = imgPath.substr(imgPath.lastIndexOf('.') + 1);
+                                    if (strExtension != 'jpg' && strExtension != 'gif'
+                                        && strExtension != 'png' && strExtension != 'bmp') {
+                                        alert("请选择图片文件");
+                                        return;
+                                    }
+//                            var myform = document.getElementById('art_from');
+                                    var formData = new FormData($('#art_form')[0]);
+                                    formData.append('_token', '{{csrf_token()}}');
+//                                                                console.log(formData);
+                                    $.ajax({
+                                        type: "POST",
+                                        url: "/admin/upload",
+                                        data: formData,
+                                        async: true,
+                                        cache: false,
+                                        contentType: false,
+                                        processData: false,
+                                        success: function(data) {
+//                                    console.log(data);
+//                                    alert("上传成功");
+//                                        七牛云
+//                                        $('#img1').attr('src','http://ouawuxiun.bkt.clouddn.com/'+data);
+//                                        OSS
+// $('#img1').attr('src','http://project185.oss-cn-shanghai.aliyuncs.com/'+data);
+//                                        本地服务器
+                                            $('#img1').attr('src','/'+data);
+
+                                            $('#art_thumb').val(data);
+
+                                        },
+                                        error: function(XMLHttpRequest, textStatus, errorThrown) {
+                                            alert("上传失败，请检查网络后重试");
+                                        }
+                                    });
+                                }
+
+                            </script>
+                        </div>
+                    </div>
+
+                    <div class="am-form-group">
+                        <label class="am-u-sm-3 am-form-label" for="user-name">文章标签：</label>
+                        <div class="am-u-sm-9">
+                            <input type="text" placeholder="文章标签" id="user-name" name="art_editor" class="tpl-form-input">
+
+                        </div>
+                    </div>
+
+                    <div class="am-form-group">
+                        <label class="am-u-sm-3 am-form-label" for="user-intro">描述：</label>
+                        <div class="am-u-sm-9">
+                            <textarea placeholder="描述" id="user-intro" rows="10" class="" style="height: 136px;"></textarea>
+                        </div>
+                    </div>
+
+                    <div class="am-form-group">
+                        <label class="am-u-sm-3 am-form-label" for="user-intro">内容：</label>
+                        <div class="am-u-sm-9">
+                            <script type="text/javascript" charset="utf-8" src="{{asset('ueditor/ueditor.config.js')}}"></script>
+                            <script type="text/javascript" charset="utf-8" src="{{asset('ueditor/ueditor.all.min.js')}}"> </script>
+                            <script type="text/javascript" charset="utf-8" src="{{asset('ueditor/lang/zh-cn/zh-cn.js')}}"></script>
+
+                            <script id="editor" name="art_content" type="text/plain" style="width:850px;height:300px;"></script>
+
+                            <script type="text/javascript">
+
+                                //实例化编辑器
+                                //建议使用工厂方法getEditor创建和引用编辑器实例，如果在某个闭包下引用该编辑器，直接调用UE.getEditor('editor')就能拿到相关的实例
+                                var ue = UE.getEditor('editor');
+
+                            </script>
+                            <style>
+                                .edui-default{line-height: 28px;}
+                                div.edui-combox-body,div.edui-button-body,div.edui-splitbutton-body
+                                {overflow: hidden; height:20px;}
+                                div.edui-box{overflow: hidden; height:22px;}
+                            </style>
                         </div>
                     </div>
 

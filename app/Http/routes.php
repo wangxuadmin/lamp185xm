@@ -84,8 +84,8 @@ Route::group(['prefix'=>'admin','namespace'=>'Admins'],function(){
 
 //   文章模块
     Route::resource('article','ArticleController');
-//    Route::post('upload','ArticleController@fileUpload');
-//
+    Route::post('upload','ArticleController@fileUpload');
+
 //    友情链接
     Route::resource('link','FriendController');
 //

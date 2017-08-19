@@ -18,7 +18,6 @@
     <link rel="stylesheet" href="/admins/assets/css/amazeui.datatables.min.css" />
     <link rel="stylesheet" href="/admins/assets/css/app.css">
     <script src="/admins/assets/js/jquery.min.js"></script>
-
 </head>
 
 <body data-type="index">
@@ -50,7 +49,11 @@
                     <ul>
                         <!-- 欢迎语 -->
                         <li class="am-text-sm tpl-header-navbar-welcome">
+
                             <a href="javascript:;">欢迎你, <span>Amaze UI</span> </a>
+
+                            {{--<a href="javascript:;">欢迎你, <span>{!! session('user')->user_name!!}</span> </a>--}}
+
                         </li>
 
                         <!-- 新邮件 -->
@@ -160,8 +163,8 @@
 
                         <!-- 退出 -->
                         <li class="am-text-sm">
-                            <a href="javascript:;">
-                                <span class="am-icon-sign-out"></span> 退出
+                            <a href="{{url('admin/logout')}}">
+                                <span class="am-icon-sign-out" ></span> 退出
                             </a>
                         </li>
                     </ul>
@@ -170,19 +173,32 @@
 
         </header>
 
+
+
         <!-- 侧边导航栏 -->
         <div class="left-sidebar">
             <!-- 用户信息 -->
             <div class="tpl-sidebar-user-panel">
                 <div class="tpl-user-panel-slide-toggleable">
                     <div class="tpl-user-panel-profile-picture">
+<<<<<<< HEAD
                         <img src="/admins/assets/img/user04.png" alt="">
                     </div>
                     <span class="user-panel-logged-in-text">
-              <i class="am-icon-circle-o am-text-success tpl-user-panel-status-icon"></i>
-              禁言小张
-          </span>
+                          <i class="am-icon-circle-o am-text-success tpl-user-panel-status-icon"></i>
+                          禁言小张
+                      </span>
                     <a href="javascript:;" class="tpl-user-panel-action-link"> <span class="am-icon-pencil"></span> 账号设置</a>
+=======
+                        {{--<img src="{!! session('user')->admin_pic !!}" alt="">--}}
+                    </div>
+                    <span class="user-panel-logged-in-text">
+                          <i class="am-icon-circle-o am-text-success tpl-user-panel-status-icon"></i>
+                          {{--{!! session('user')->user_name!!}--}}
+                      </span>
+                    <a href="{{url('admin/pass')}}" class="tpl-user-panel-action-link">
+                    <span class="am-icon-pencil"></span>修改密码</a>
+>>>>>>> origin/zhaoxiaoting
                 </div>
             </div>
 
@@ -204,14 +220,99 @@
                     </a>
                     <ul class="sidebar-nav sidebar-nav-sub">
                         <li class="sidebar-nav-link">
-                            <a href="table-list.html">
+                            <a href="{{url('admin/user/create')}}">
                                 <span class="am-icon-angle-right sidebar-nav-link-logo"></span> 添加用户
                             </a>
                         </li>
 
                         <li class="sidebar-nav-link">
-                            <a href="table-list-img.html">
+                            <a href="{{url('admin/user')}}">
                                 <span class="am-icon-angle-right sidebar-nav-link-logo"></span> 用户列表
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+
+
+                {{--角色模块--}}
+                <li class="sidebar-nav-link">
+                    <a href="javascript:;" class="sidebar-nav-sub-title">
+                        <i class="am-icon-table sidebar-nav-link-logo"></i> 角色模块
+                        <span class="am-icon-chevron-down am-fr am-margin-right-sm sidebar-nav-sub-ico"></span>
+                    </a>
+                    <ul class="sidebar-nav sidebar-nav-sub">
+                        <li class="sidebar-nav-link">
+                            <a href="{{url('admin/role/create')}}">
+                                <span class="am-icon-angle-right sidebar-nav-link-logo"></span> 添加角色
+                            </a>
+                        </li>
+                        <li class="sidebar-nav-link">
+                            <a href="{{url('admin/role')}}">
+                                <span class="am-icon-angle-right sidebar-nav-link-logo"></span> 角色列表
+
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+
+
+                {{--权限模块--}}
+                <li class="sidebar-nav-link">
+                    <a href="javascript:;" class="sidebar-nav-sub-title">
+                        <i class="am-icon-table sidebar-nav-link-logo"></i>权限模块
+                        <span class="am-icon-chevron-down am-fr am-margin-right-sm sidebar-nav-sub-ico"></span>
+                    </a>
+                    <ul class="sidebar-nav sidebar-nav-sub">
+                        <li class="sidebar-nav-link">
+                            <a href="{{url('admin/permission/create')}}">
+                                <span class="am-icon-angle-right sidebar-nav-link-logo"></span> 添加权限
+                            </a>
+                        </li>
+                        <li class="sidebar-nav-link">
+                            <a href="{{url('admin/permission')}}">
+                                <span class="am-icon-angle-right sidebar-nav-link-logo"></span> 权限列表
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+
+
+                {{--后台分类模块--}}
+                <li class="sidebar-nav-link">
+                    <a href="javascript:;" class="sidebar-nav-sub-title">
+                        <i class="am-icon-table sidebar-nav-link-logo"></i> 分类模块
+                        <span class="am-icon-chevron-down am-fr am-margin-right-sm sidebar-nav-sub-ico"></span>
+                    </a>
+                    <ul class="sidebar-nav sidebar-nav-sub">
+                        <li class="sidebar-nav-link">
+                            <a href="{{url('admin/cate/create')}}">
+                                <span class="am-icon-angle-right sidebar-nav-link-logo"></span> 添加分类
+                            </a>
+                        </li>
+                        <li class="sidebar-nav-link">
+                            <a href="{{url('admin/cate')}}">
+                                <span class="am-icon-angle-right sidebar-nav-link-logo"></span> 分类列表
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+
+
+                {{--后台文章模块--}}
+                <li class="sidebar-nav-link">
+                    <a href="javascript:;" class="sidebar-nav-sub-title">
+                        <i class="am-icon-table sidebar-nav-link-logo"></i> 文章模块
+                        <span class="am-icon-chevron-down am-fr am-margin-right-sm sidebar-nav-sub-ico"></span>
+                    </a>
+                    <ul class="sidebar-nav sidebar-nav-sub">
+                        <li class="sidebar-nav-link">
+                            <a href="{{url('admin/article/create')}}">
+                                <span class="am-icon-angle-right sidebar-nav-link-logo"></span> 添加文章
+                            </a>
+                        </li>
+                        <li class="sidebar-nav-link">
+                            <a href="{{url('admin/article')}}">
+                                <span class="am-icon-angle-right sidebar-nav-link-logo"></span> 文章列表
                             </a>
                         </li>
                     </ul>
@@ -238,6 +339,7 @@
                     </ul>
                 </li>
 
+
                 {{--友情链接--}}
                 <li class="sidebar-nav-link">
                     <a href="javascript:;" class="sidebar-nav-sub-title">
@@ -258,48 +360,6 @@
                     </ul>
                 </li>
 
-                {{--后台分类模块--}}
-                <li class="sidebar-nav-link">
-                    <a href="javascript:;" class="sidebar-nav-sub-title">
-                        <i class="am-icon-table sidebar-nav-link-logo"></i> 分类模块
-                        <span class="am-icon-chevron-down am-fr am-margin-right-sm sidebar-nav-sub-ico"></span>
-                    </a>
-                    <ul class="sidebar-nav sidebar-nav-sub">
-                        <li class="sidebar-nav-link">
-                            <a href="{{url('admin/cate/create')}}">
-                                <span class="am-icon-angle-right sidebar-nav-link-logo"></span> 添加分类
-                            </a>
-                        </li>
-
-                        <li class="sidebar-nav-link">
-                            <a href="{{url('admin/cate')}}">
-                                <span class="am-icon-angle-right sidebar-nav-link-logo"></span> 分类列表
-                            </a>
-                        </li>
-                    </ul>
-                </li>
-
-                {{--后台文章模块--}}
-                <li class="sidebar-nav-link">
-                    <a href="javascript:;" class="sidebar-nav-sub-title">
-                        <i class="am-icon-table sidebar-nav-link-logo"></i> 文章模块
-                        <span class="am-icon-chevron-down am-fr am-margin-right-sm sidebar-nav-sub-ico"></span>
-                    </a>
-                    <ul class="sidebar-nav sidebar-nav-sub">
-                        <li class="sidebar-nav-link">
-                            <a href="{{url('admin/article/create')}}">
-                                <span class="am-icon-angle-right sidebar-nav-link-logo"></span> 添加文章
-                            </a>
-                        </li>
-
-                        <li class="sidebar-nav-link">
-                            <a href="{{url('admin/article')}}">
-                                <span class="am-icon-angle-right sidebar-nav-link-logo"></span> 文章列表
-
-                            </a>
-                        </li>
-                    </ul>
-                </li>
 
             </ul>
         </div>
@@ -317,11 +377,7 @@
     <script src="/admins/assets/js/amazeui.datatables.min.js"></script>
     <script src="/admins/assets/js/dataTables.responsive.min.js"></script>
     <script src="/admins/assets/js/app.js"></script>
-<<<<<<< HEAD
     <script type="text/javascript" src="/layer/layer.js"></script>
-=======
-    <script src="/layer/layer.js"></script>
->>>>>>> origin/ale
 
 </body>
 

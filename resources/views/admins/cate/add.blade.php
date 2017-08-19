@@ -28,6 +28,7 @@
                 @endif
             </div>
 
+
             <div class="widget-body am-fr">
 
                 <form action="{{url('admin/cate')}}" method="post" class="am-form tpl-form-line-form" >
@@ -65,6 +66,7 @@
         </div>
     </div>
 
+
     <style>
         #vs{
             border-width: 0 0 1px;
@@ -84,4 +86,5 @@
             $('#vs').hide();
         },3000)
     </script>
+
 @endsection

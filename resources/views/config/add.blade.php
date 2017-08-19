@@ -59,7 +59,8 @@
                                             <div class="am-form-group am-form-file">
 
                                                 <button class="am-btn am-btn-danger am-btn-sm" type="button">
-    <i class="am-icon-cloud-upload"></i> 添加封面图片</button>
+                                                    <i class="am-icon-cloud-upload"></i> 添加封面图片
+                                                </button>
                                                 <input type="file" multiple="true" id="doc-form-file"name="conf_image">
                                             </div>
 

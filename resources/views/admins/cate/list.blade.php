@@ -15,7 +15,9 @@
 
                 <form action="{{url('admin/cate')}}" method="get"">
 
+
                 <div class="am-u-sm-12 am-u-md-12 am-u-lg-3" style="margin-bottom:20px;margin-left:75%">
+
                     <div class="am-input-group am-input-group-sm tpl-form-border-form cl-p">
                         <input type="text" class="am-form-field" name="keywords" value="{{isset($keyword)?$keyword:''}}" placeholder="关键字">
                         <span class="am-input-group-btn">
@@ -79,6 +81,7 @@
 
         //显示当前分类下的文章
         function showArt(cate_id){
+
             $.post('/admin/cate/showart',{'_token':'{{csrf_token()}}','cate_id':cate_id},function(data){
                 layer.open({
                     type: 1,
@@ -86,6 +89,7 @@
                     area: ['620px', '340px'], //宽高
                     content: data
                 });
+
             });
         }
 

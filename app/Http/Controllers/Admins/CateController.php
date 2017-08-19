@@ -2,14 +2,18 @@
 
 namespace App\Http\Controllers\Admins;
 
+
 use App\Http\Model\Article;
+
 use App\Http\Model\Cate;
 use Illuminate\Http\Request;
 
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Input;
+
 use Illuminate\Support\Facades\Validator;
+
 
 class CateController extends Controller
 {
@@ -24,12 +28,15 @@ class CateController extends Controller
         $input = $request->except('_token');
 //        1 根据传过来的id获取当前分类下的所有文章
         $arts =  Article::where('cate_id',$input['cate_id'])->get();
+
 //       2 遍历所有文章，拼装成一个字符串格式的表格返回给前端
 
 //        存放所有文章
         $str = '';
 
+
         $str = '<table class="am-table am-table-compact am-table-bordered tpl-table-black" id="example-r" style="color:black;"><tr><th class="tc">ID</th><th>文章标题</th><th>作者</th></tr>';
+
 
         foreach($arts as $k=>$v){
             $str.= "<tr><td >".$v->art_id."</td><td>".$v->art_title."</td><td>".$v->art_editor."</td></tr>";
@@ -108,6 +115,7 @@ class CateController extends Controller
      */
     public function store(Request $request)
     {
+
         //1.获取数据
         $input = $request->except('_token');
 
@@ -125,6 +133,7 @@ class CateController extends Controller
         }
 
         //3.插入灵数据
+
         $re  = Cate::create($input);
         if($re){
             return redirect('admin/cate');

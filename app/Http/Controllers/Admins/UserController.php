@@ -52,8 +52,28 @@ class UserController extends Controller
     {
 
 
-        $input = $request->except('_token','password_a');
+        $input = $request->except('_token','password_a','user_pic');
 //        dd($input);
+
+        //上传头像
+        $imgs = $request->hasFile('user_pic');
+//        dd($imgs);
+
+        if ($imgs) {
+
+            //上传文件的名字
+            $name = rand(1111,9999).time();
+
+            //获取后缀  $_FILES['pic']
+            $suffix = $request->file('user_pic')->getClientOriginalExtension();
+            //
+            $request->file('user_pic')->move('./upload', $name.'.'.$suffix);
+        }
+
+        //存入到数据库
+        $input['user_pic'] = '/upload/'.$name.'.'.$suffix;
+
+
         $rule = [
                 'user_name' => 'required|regex:/^\w{6,12}$/|unique:user',
                 'user_pass'=>'required|regex:/^\w{6,14}$/',
@@ -84,10 +104,10 @@ class UserController extends Controller
 //        echo 11;
 //        添加用户
         $input['user_pass'] = Crypt::encrypt($input['user_pass']);
-        $re = User::create($input);
+        $res = User::create($input);
 //        dd($re);
 //        如果添加成功 跳转到用户列表页
-        if($re){
+        if($res){
             return redirect('admin/user');
         }else{
             return back()->with('errors','用户添加失败');
@@ -118,22 +138,19 @@ class UserController extends Controller
         return view('admins.user.edit',compact('user'));
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
+
     public function update(Request $request, $id)
     {
+//        dd($request->all());
 
-        $data = $request->except('_token','password_a','_method');
-//        dd($data);
+
         //根据id获取要修改的用户
-        $user = User::find($id);
+//        $user = User::find($id);
+        //dd($user);
         //获取到要修改的信息
-        $input = $request->except('_token');
+        $input = $request->except('_token','_method','user_pic','password_a');
+        // dd($input);
+
         //表单验证
         $rule = [
                 'user_name' => 'required|regex:/^\w{6,12}$/|unique:user',
@@ -143,7 +160,6 @@ class UserController extends Controller
                 'user_tel'=>'required|regex:/^1[34578]\d{9}$/'
 
         ];
-
 
         $mess = [
             'user_name.required'=>'用户名不能为空',
@@ -162,12 +178,37 @@ class UserController extends Controller
         if($validator->fails()){
             return back()->withErrors($validator)->withInput();
         }
-
         //将密码加密
         $input['user_pass'] = Crypt::encrypt($input['user_pass']);
 
-        $res = $user->update($data);
 
+        $imgs = $request->hasFile('user_pic');
+//        dd($imgs);
+
+        if ($imgs) {
+
+            //上传文件的名字
+            $name = rand(1111,9999).time();
+
+            //获取后缀  $_FILES['pic']
+            $suffix = $request->file('user_pic')->getClientOriginalExtension();
+            //
+            $request->file('user_pic')->move('./upload', $name.'.'.$suffix);
+            //存入到数据库
+            $input['user_pic'] = '/upload/'.$name.'.'.$suffix;
+        }
+
+
+
+        //上传头像
+//        dd($request->hasFile);
+
+
+
+
+        //修改信息
+        $res = User::where('user_id',$id)->update($input);
+        //判断是否修改成功
         if($res){
         //修改成功，返回用户列表页
             return redirect('admin/user');
@@ -179,22 +220,23 @@ class UserController extends Controller
 
     public function destroy($id)
     {
+        echo 1111;
 
-        $res =  User::where('user_id',$id)->delete();
-//      删除成功
-        if($res){
-            $data = [
-                'status'=>0,
-                'msg'=>'删除成功',
-            ];
-        }else{
-            $data = [
-                'status'=>1,
-                'msg'=>'删除失败',
-            ];
-        }
-
-        return $data;
+//        $res =  User::where('user_id',$id)->delete();
+//
+//        if($res){
+//            $data = [
+//                'status'=>0,
+//                'msg'=>'删除成功',
+//            ];
+//        }else{
+//            $data = [
+//                'status'=>1,
+//                'msg'=>'删除失败',
+//            ];
+//        }
+//
+//        return $data;
     }
 
     //给角色授权
@@ -223,5 +265,6 @@ class UserController extends Controller
         }
         return redirect('admin/user');
     }
+
 
 }

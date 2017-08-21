@@ -27,24 +27,37 @@
     <script src="/homes/js/jquery.min.js"></script>
     <script src="/homes/js/bootstrap.min.js"></script>
     <script src="/homes/js/modernizr.js"></script>
+
+    <style>
+        #miaodian {position:fixed;right:0px;bottom:0px;width:80px;height:80px;
+                    display:block;background-color:#3BB4FF;border-radius:50%;           
+                }
+        .wz{position:relative;top:14px;right:-20px;font-weight:bold;font-family:'微软雅黑';font-size:17px;
+                }       
+    </style>
     
 </head>
 <body>
+    <a name='maodian'></a>
     <header>
         <div class="widewrapper masthead">
             <div class="container">
-                <a href="index.html" id="logo">
-                    <img src="/homes/img/logo.png" alt="clean Blog">
-                </a>
+                <!-- <a href="index.html" id="logo"> </a> -->
+                
+                <div id="logo" >
+                    @foreach($conf as $k=>$v)
+                    <img src="{{ $v->conf_image }}" alt="clean Blog" style="width:100px;height:70px;">
+                    @endforeach
+                </div>
         
                 <div id="mobile-nav-toggle" class="pull-right">
                     <a href="#" data-toggle="collapse" data-target=".clean-nav .navbar-collapse">
                         <i class="fa fa-bars"></i>
                     </a>
                 </div>
-
+                 
                 <nav class="pull-right clean-nav">
-                    <div class="collapse navbar-collapse">
+                    <div class="collapse navbar-collapse" >
                         <ul class="nav nav-pills navbar-nav">
                             @foreach ($navs as $k => $v) 
                                                           
@@ -64,216 +77,38 @@
                                 </li> -->                        
                         </ul>
                     </div>
-                </nav>        
-
-            </div>
-        </div>
-
-        <div class="widewrapper subheader">
-            <div class="container">
-                <div class="clean-breadcrumb">
-                    <a href="#">Blog</a>
-                </div>
-
-                <div class="clean-searchbox">
-                    <form action="#" method="get" accept-charset="utf-8">
-                        <input class="searchfield" id="searchbox" type="text" placeholder="Search">
-                        <button class="searchbutton" type="submit">
-                            <i class="fa fa-search"></i>
-                        </button>
-                    </form>
-                </div>
-            </div>
-        </div>
-    </header>
-
-    <div class="widewrapper main">
-        <div class="container">
-            <div class="row">
-                <div class="col-md-8 blog-main">
-                    <div class="row">
-                        <div class="col-md-6 col-sm-6">
-                            <article class=" blog-teaser">
-                                <header>
-                                    <img src="/homes/img/1.jpg" alt="">
-                                    <h3><a href="single.html">How to Create Template</a></h3>
-                                    <span class="meta">19 August 2017, John Doe</span>
-                                    <hr>
-                                </header>
-                            
-                            </article>
-                        </div>
-                        <div class="col-md-6 col-sm-6">
-                            <article class="blog-teaser">
-                                <header>
-                                    <img src="/homes/img/2.jpg" alt="">
-                                    <h3><a href="single.html">Clean Personal Blog Template</a></h3>
-                                    <span class="meta">19 August 2017, John Doe</span>
-                                    <hr>
-                                </header>
-                            
-                            </article>
-                        </div>
-                    </div>
-        
-                    <div class="row">
-                        <div class="col-md-6 col-sm-6">
-                            <article class="blog-teaser">
-                                <header>
-                                    <img src="/homes/img/4.jpg" alt="">
-                                    <h3><a href="single.html">Blackor - Responsive HTML5 Theme</a></h3>
-                                    <span class="meta">19 August 2017, John Doe</span>
-                                    <hr>
-                                </header>
-                               
-                            </article>
-                        </div>
-                        <div class="col-md-6 col-sm-6">
-                            <article class=" blog-teaser">
-                                <header>
-                                    <img src="/homes/img/1.jpg" alt="">
-                                    <h3><a href="single.html">How to Create Template</a></h3>
-                                    <span class="meta">19 August 2017, John Doe</span>
-                                    <hr>
-                                </header>
-                            
-                            </article>
-                        </div>
-
-                    </div>
-                     <div class="row">
-                        <div class="col-md-6 col-sm-6">
-                            <article class="blog-teaser">
-                                <header>
-                                    <img src="/homes/img/3.jpg" alt="">
-                                    <h3><a href="single.html">Blackor - Responsive HTML5 Theme</a></h3>
-                                    <span class="meta">19 August 2017, John Doe</span>
-                                    <hr>
-                                </header>
-                               
-                            </article>
-                        </div>
-                        <div class="col-md-6 col-sm-6">
-                            <article class=" blog-teaser">
-                                <header>
-                                    <img src="/homes/img/1.jpg" alt="">
-                                    <h3><a href="single.html">How to Create Template</a></h3>
-                                    <span class="meta">19 August 2017, John Doe</span>
-                                    <hr>
-                                </header>
-                            
-                            </article>
-                        </div>
-
-                    </div>
-                     <div class="row">
-                        <div class="col-md-6 col-sm-6">
-                            <article class="blog-teaser">
-                                <header>
-                                    <img src="/homes/img/3.jpg" alt="">
-                                    <h3><a href="single.html">Blackor - Responsive HTML5 Theme</a></h3>
-                                    <span class="meta">19 August 2017, John Doe</span>
-                                    <hr>
-                                </header>
-                               
-                            </article>
-                        </div>
-                        <div class="col-md-6 col-sm-6">
-                            <article class=" blog-teaser">
-                                <header>
-                                    <img src="/homes/img/5.jpg" alt="">
-                                    <h3><a href="single.html">How to Create Template</a></h3>
-                                    <span class="meta">19 August 2017, John Doe</span>
-                                    <hr>
-                                </header>
-                            
-                            </article>
-                        </div>
-
-                    </div>
-
-                    <div class="paging">
-                        <a href="#" class="older">Older Post</i></a>
-                    </div>
-                </div>
-                <aside class="col-md-4 blog-aside">
-                    
-                    <div class="aside-widget">
-                        <header>
-                            <h3>Featured Post</h3>
-                        </header>
-                        <div class="body">
-                            <ul class="clean-list">
-                                <li><a href="">Clean - Responsive HTML5 Template</a></li>
-                                <li><a href="">Responsive Pricing Table</a></li>
-                                <li><a href="">Yellow HTML5 Template</a></li>
-                                <li><a href="">Blackor Responsive Theme</a></li>
-                                <li><a href="">Portfolio Bootstrap Template</a></li>
-                                <li><a href="">Clean Slider Template</a></li>
-                            </ul>
-                        </div>
-                    </div>
+                </nav>     
                 
-                    <div class="aside-widget">
-                        <header>
-                            <h3>Related Post</h3>
-                        </header>
-                        <div class="body">
-                            <ul class="clean-list">
-                                <li><a href="">Blackor Responsive Theme</a></li>
-                                <li><a href="">Portfolio Bootstrap Template</a></li>
-                                <li><a href="">Clean Slider Template</a></li>
-                                <li><a href="">Clean - Responsive HTML5 Template</a></li>
-                                <li><a href="">Responsive Pricing Table</a></li>
-                                <li><a href="">Yellow HTML5 Template</a></li>
-                            </ul>
-                        </div>
-                    </div>
-
-                    <div class="aside-widget">
-                        <header>
-                            <h3>Tags</h3>
-                        </header>
-                        <div class="body clearfix">
-                            <ul class="tags">
-                                <li><a href="#">HTML5</a></li>
-                                <li><a href="#">CSS3</a></li>
-                                <li><a href="#">COMPONENTS</a></li>
-                                <li><a href="#">TEMPLATE</a></li>
-                                <li><a href="#">PLUGIN</a></li>
-                                <li><a href="#">BOOTSTRAP</a></li>
-                                <li><a href="#">TUTORIAL</a></li>
-                                <li><a href="#">UI/UX</a></li>                            
-                            </ul>
-                        </div>
-                    </div>
-                </aside>
             </div>
         </div>
-    </div>
 
+
+    @section('content')
+
+    @show
+    
     <footer>
         <div class="widewrapper footer">
             <div class="container">
                 <div class="row">
                     <div class="col-md-4 footer-widget">
-                        <h3> <i class="fa fa-user"></i>About</h3>
+                        <h3> <i class="fa fa-user"></i>关于</h3>
 
                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ab animi laboriosam nostrum consequatur fugiat at, labore praesentium modi, quasi dolorum debitis reiciendis facilis, dolor saepe sint nemo, earum molestias quas.</p>
                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolorum, error aspernatur assumenda quae eveniet.</p>
                     </div>
 
                     <div class="col-md-4 footer-widget">
-                        <h3> <i class="fa fa-pencil"></i> Recent Post</h3>
+                        <h3> <i class="fa fa-pencil"></i>最近帖子</h3>
                         <ul class="clean-list">
-                            <li><a href="">Clean - Responsive HTML5 Template</a></li>
-                            <li><a href="">Responsive Pricing Table</a></li>
-                            <li><a href="">Yellow HTML5 Template</a></li>
+                            <li><a href="https://www.baidu.com">你瞅啥</a></li>
+                            <li><a href="https://www.baidu.com">放学别走!!!</a></li>
+                            <li><a href="https://www.baidu.com">再瞅一个试试</a></li>
                         </ul>
                     </div>
 
                     <div class="col-md-4 footer-widget">
-                        <h3> <i class="fa fa-envelope"></i>Contact Me</h3>
+                        <h3> <i class="fa fa-envelope"></i>联系我</h3>
 
                         <p>Lorem ipsum dolor sit amet Lorem ipsum dolor sit amet.</p>
                         <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nihil fugiat, cupiditate veritatis excepturi tempore explicabo.</p>
@@ -290,6 +125,6 @@
                 版权所有©2017.博客公司所有权利
         </div>
     </footer>     
-
+    <a href='#maodian'><div id='miaodian'><div class='wz'>返&nbsp;回<br/>顶&nbsp;部</div></div></a>
 </body>
 </html>

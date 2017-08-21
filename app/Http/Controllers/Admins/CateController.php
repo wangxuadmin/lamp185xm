@@ -86,11 +86,12 @@ class CateController extends Controller
      */
     public function index(Request $request)
     {
-        //
+        //1.获取全部分类
         $cates = (new Cate)->tree($request);
-//        dd($cates);
+        //2.获取关键字,传送到页面
         $keyword = $request->input('keywords');
-       return view('admins.cate.list',compact('cates','keyword'));
+        //3.返回页面
+        return view('admins.cate.list',compact('cates','keyword'));
 
     }
 

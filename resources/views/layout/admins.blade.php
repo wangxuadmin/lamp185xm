@@ -181,15 +181,7 @@
             <div class="tpl-sidebar-user-panel">
                 <div class="tpl-user-panel-slide-toggleable">
                     <div class="tpl-user-panel-profile-picture">
-<<<<<<< HEAD
-                        <img src="/admins/assets/img/user04.png" alt="">
-                    </div>
-                    <span class="user-panel-logged-in-text">
-                          <i class="am-icon-circle-o am-text-success tpl-user-panel-status-icon"></i>
-                          禁言小张
-                      </span>
-                    <a href="javascript:;" class="tpl-user-panel-action-link"> <span class="am-icon-pencil"></span> 账号设置</a>
-=======
+
                         {{--<img src="{!! session('user')->admin_pic !!}" alt="">--}}
                     </div>
                     <span class="user-panel-logged-in-text">
@@ -198,7 +190,7 @@
                       </span>
                     <a href="{{url('admin/pass')}}" class="tpl-user-panel-action-link">
                     <span class="am-icon-pencil"></span>修改密码</a>
->>>>>>> origin/zhaoxiaoting
+
                 </div>
             </div>
 

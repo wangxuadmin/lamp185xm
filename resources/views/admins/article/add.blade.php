@@ -30,12 +30,12 @@
 
             <div class="widget-body am-fr">
 
-                <form action="{{url('admin/upload')}}" method="post" id="art_form" enctype="multipart/form-data" class="am-form tpl-form-line-form" >
+                <form action="{{url('admin/article')}}" method="post" id="art_form" enctype="multipart/form-data" class="am-form tpl-form-line-form" >
 
                     <div class="am-form-group">
                         <label class="am-u-sm-3 am-form-label" for="user-phone">父类</label>
                         <div class="am-u-sm-9">
-                            <select name="cate_pid" style="display: none;" data-am-selected="{searchBox: 1}">
+                            <select name="cate_id" style="display: none;" data-am-selected="{searchBox: 1}">
 
                                 <option value="0">==顶级分类==</option>
                                 @foreach($cates as $k=>$v)
@@ -94,7 +94,6 @@
 //                            var myform = document.getElementById('art_from');
                                     var formData = new FormData($('#art_form')[0]);
                                     formData.append('_token', '{{csrf_token()}}');
-//                                                                console.log(formData);
                                     $.ajax({
                                         type: "POST",
                                         url: "/admin/upload",
@@ -104,12 +103,7 @@
                                         contentType: false,
                                         processData: false,
                                         success: function(data) {
-//                                    console.log(data);
-//                                    alert("上传成功");
-//                                        七牛云
-//                                        $('#img1').attr('src','http://ouawuxiun.bkt.clouddn.com/'+data);
-//                                        OSS
-// $('#img1').attr('src','http://project185.oss-cn-shanghai.aliyuncs.com/'+data);
+;
 //                                        本地服务器
                                             $('#img1').attr('src','/'+data);
 
@@ -129,7 +123,7 @@
                     <div class="am-form-group">
                         <label class="am-u-sm-3 am-form-label" for="user-name">文章标签：</label>
                         <div class="am-u-sm-9">
-                            <input type="text" placeholder="文章标签" id="user-name" name="art_editor" class="tpl-form-input">
+                            <input type="text" placeholder="文章标签" id="user-name" name="art_tag" class="tpl-form-input">
 
                         </div>
                     </div>
@@ -137,7 +131,7 @@
                     <div class="am-form-group">
                         <label class="am-u-sm-3 am-form-label" for="user-intro">描述：</label>
                         <div class="am-u-sm-9">
-                            <textarea placeholder="描述" id="user-intro" rows="10" class="" style="height: 136px;"></textarea>
+                            <textarea placeholder="描述" name="art_description" id="user-intro" rows="10" class="" style="height: 136px;"></textarea>
                         </div>
                     </div>
 

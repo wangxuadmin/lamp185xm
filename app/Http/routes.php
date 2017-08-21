@@ -62,19 +62,19 @@ Route::group(['prefix'=>'admin','namespace'=>'Admins'],function(){
 //    Route::get('info','IndexController@info');
 
 //    //退出登录
-//    Route::get('quit','IndexController@quit');
+    Route::get('logout','IndexController@logout');
 //    //修改密码
-//    Route::get('pass','IndexController@pass');
+    Route::get('pass','IndexController@pass');
 //    //修改密码业务逻辑
-//    Route::post('pass','IndexController@dopass');
+    Route::post('pass','IndexController@dopass');
 //
 //
 ////    用户模块
-//    Route::resource('user','UserController');
+    Route::resource('user','UserController');
 //    //    给相应的用户赋予角色
-//    Route::get('user/auth/{id}','UserController@auth');
+    Route::get('user/auth/{id}','UserController@auth');
 ////    保存给角色添加权限的路由
-//    Route::post('user/doauth/','UserController@doauth');
+    Route::post('user/doauth/','UserController@doauth');
 //
 //    分类模块
     Route::resource('cate','CateController');
@@ -85,6 +85,7 @@ Route::group(['prefix'=>'admin','namespace'=>'Admins'],function(){
 //   文章模块
     Route::resource('article','ArticleController');
     Route::post('upload','ArticleController@fileUpload');
+    Route::put('uploads','ArticleController@fileUploads');
 
 //    友情链接
     Route::resource('link','FriendController');
@@ -97,14 +98,14 @@ Route::group(['prefix'=>'admin','namespace'=>'Admins'],function(){
 //
 //
 //    角色管理
-//    Route::resource('role','RoleController');
+    Route::resource('role','RoleController');
 //    给相应的角色赋予权限
-//    Route::get('role/auth/{id}','RoleController@auth');
+    Route::get('role/auth/{id}','RoleController@auth');
 //    保存给角色添加权限的路由
-//    Route::post('role/doauth/','RoleController@doauth');
+    Route::post('role/doauth/','RoleController@doauth');
 //    权限管理
 //
-//    Route::resource('permission','PermissionController');
+    Route::resource('permission','PermissionController');
 
  });
 

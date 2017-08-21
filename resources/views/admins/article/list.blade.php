@@ -1,19 +1,19 @@
 @extends('layout.admins')
 
-@section('title','分类列表页')
+@section('title','文章列表页')
 
 @section('content')
     <div class="am-u-sm-12 am-u-md-12 am-u-lg-14">
         <div class="widget am-cf">
             <div class="widget-head am-cf">
-                <div class="widget-title am-fl">分类列表</div>
+                <div class="widget-title am-fl">文章列表</div>
                 <div class="widget-function am-fr">
                     <a class="am-icon-cog" href="javascript:;"></a>
                 </div>
             </div>
             <div class="widget-body  widget-body-lg am-fr">
 
-                <form action="{{url('admin/cate')}}" method="get"">
+                <form action="{{url('admin/article')}}" method="get"">
 
                 <div class="am-u-sm-12 am-u-md-12 am-u-lg-3" style="margin-bottom:20px;margin-left:75%">
                     <div class="am-input-group am-input-group-sm tpl-form-border-form cl-p">
@@ -29,39 +29,34 @@
                 <table width="100%" id="example-r" class="am-table am-table-compact tpl-table-black ">
                     <thead>
                     <tr>
-                        <th >排序</th>
                         <th class="tc">ID</th>
-                        <th>分类名称</th>
                         <th>标题</th>
-                        <th>查看次数</th>
+                        <th>点击量</th>
+                        <th>编辑</th>
+                        <th>发布时间</th>
                         <th>操作</th>
                     </tr>
                     </thead>
                     <tbody>
-                    @foreach($cates as $k=>$v)
+                    @foreach($arts as $k=>$v)
                     <tr class="even gradeC">
-                        <td >
-                            <input type="text" name="ord[]" style="color:blue;width:30px;" value="{{$v->cate_order}}" onchange="changeOrder(this,{{$v->cate_id}})">
-                        </td>
-                        <td class="tc">{{$v->cate_id}}</td>
+                        <td >{{$v->art_id}}</td>
+                        <td class="tc">{{$v->art_title}}</td>
                         <td>
-                            <a href="#">{{$v->cate_names}}</a>
+                            <a href="#">{{$v->art_view}}</a>
                         </td>
                         <td>
-                            <a href="#">{{$v->cate_title}}</a>
+                            <a href="#">{{$v->art_editor}}</a>
                         </td>
                         <td>
-                            <a href="#">{{$v->cate_view}}</a>
+                            <a href="#">{{date('Y-m-d H:i:s',$v->art_time)}}</a>
                         </td>
                         <td>
                             <div class="tpl-table-black-operation">
-                                <a href="javascript:void(0)" onclick="showArt({{$v->cate_id}})">
-                                    查看文章
-                                </a>
-                                <a href="{{url('admin/cate/'.$v->cate_id.'/edit')}}">
+                                <a href="{{url('admin/article/'.$v->art_id.'/edit')}}">
                                     <i class="am-icon-pencil"></i> 编辑
                                 </a>
-                                <a class="tpl-table-black-operation-del" href="javascript:;" onclick="delCate({{$v->cate_id}})">
+                                <a class="tpl-table-black-operation-del" href="javascript:;" onclick="delArticle({{$v->art_id}})">
                                     <i class="am-icon-trash"></i> 删除
                                 </a>
                             </div>
@@ -71,53 +66,82 @@
                     <!-- more data -->
                     </tbody>
                 </table>
+                <style>
+                    #abc ul li{
+                        border-radius: 0;
+                        display: block;
+                        line-height: 1.2;
+                        margin-bottom: 5px;
+                        margin-right: 1px;
+                        padding: 0.5em 1em;
+                        position: relative;
+                        text-decoration: none;
+
+                        display: inline-block;
+
+                    }
+
+                    #abc ul li span{
+
+
+                        background: #3f4649 none repeat scroll 0 0;
+                        border: medium none;
+                        color: #fff;
+                        padding: 6px 12px;
+
+                    }
+
+                    #abc .active span{
+                        background: #167fa1 none repeat scroll 0 0;
+                        border: 1px solid #167fa1;
+                        color: #fff;
+                        padding: 6px 12px;
+                    }
+
+                    #abc li a{
+                        background: #3f4649 none repeat scroll 0 0;
+                        border: medium none;
+                        color: #fff;
+                        padding: 6px 12px;
+                    }
+
+                    #id{
+                        width:100%;
+
+                    }
+
+                    *, *::after, *::before {
+                        box-sizing: border-box;
+                    }
+
+                </style>
+                <div class="am-u-lg-12 am-cf">
+
+                    <div class="am-fr">
+                        <div id="abc">
+                            {!! $arts->render() !!}
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
 
     <script>
 
-        //显示当前分类下的文章
-        function showArt(cate_id){
-            $.post('/admin/cate/showart',{'_token':'{{csrf_token()}}','cate_id':cate_id},function(data){
-                layer.open({
-                    type: 1,
-                    skin: 'layui-layer-rim', //加上边框
-                    area: ['620px', '340px'], //宽高
-                    content: data
-                });
-            });
-        }
-
-        //排序
-        function changeOrder(obj,cate_id){
-            //获取文本框的排序值
-            var cate_order =  $(obj).val();
-            $.post('/admin/cate/changeorder',{'_token':'{{csrf_token()}}','cate_id':cate_id,'cate_order':cate_order},function(data){
-                if(data.status == 0){
-                    location.href = location.href;
-                    layer.msg('修改成功', {icon: 1});
-                }else{
-                    location.href = location.href;
-                    layer.msg('修改失败', {icon: 2});
-                }
-            })
-        }
-
         // 删除
-        function delCate(id){
+        function delArticle(id){
             layer.confirm('确认删除吗？', {
                 btn: ['确定','取消'] //按钮
             }, function(){
-                $.post("{{url('admin/cate/')}}/"+id,{'_method':'delete','_token':'{{csrf_token()}}'},function(data){
+                $.post("{{url('admin/article/')}}/"+id,{'_method':'delete','_token':'{{csrf_token()}}'},function(data){
+
                     if(data.status == 0){
                         location.href = location.href;
                         layer.msg(data.msg, {icon: 1});
-                    }else if(data.status == 2){
-                        layer.msg(data.msg, {icon: 2});
                     }else{
                         location.href = location.href;
-                        layer.msg(data.msg, {icon: 1});
+                        layer.msg(data.msg, {icon: 2});
                     }
                 });
             }, function(){

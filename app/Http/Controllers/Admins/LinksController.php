@@ -18,7 +18,7 @@ class LinksController extends Controller
     public function index(Request $request)
     {
         //
-        $friend=links::where('link_name','like','%'.$request['keywords'].'%')->paginate(3);
+        $friend = links::where('link_name','like','%'.$request['keywords'].'%')->paginate(3);
 
         $keyword = $request->input('keywords');
         
@@ -49,7 +49,7 @@ class LinksController extends Controller
     public function store(Request $request)
     {
         //
-          $input = $request->except('_token');
+         $input = $request->except('_token');  
         
          $re  = links::create($input);
          
@@ -99,7 +99,8 @@ class LinksController extends Controller
     public function update(Request $request, $id)
     {
         //
-          $input = $request->except('_token','_method');
+         $input = $request->except('_token','_method');
+         
          $link = links::find($id);
         
         $re = $link->update($input);

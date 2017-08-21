@@ -17,9 +17,7 @@
     <link rel="stylesheet" href="/admins/assets/css/amazeui.datatables.min.css" />
     <link rel="stylesheet" href="/admins/assets/css/app.css">
     <script src="/admins/assets/js/jquery.min.js"></script>
-
 </head>
-
 <body data-type="login">
     <script src="/admins/assets/js/theme.js"></script>
     <div class="am-g tpl-g">
@@ -63,10 +61,10 @@
                             <div id="mws-login-remember" class="mws-form-row mws-inset">
                                 <ul class="mws-form-list inline">
                                     <li>
-                                        <input name="code" type="text" placeholder="验证码">
                                         <a onclick="javascript:re_captcha();">
-                                            <img src="{{ URL('/code/captcha/1') }}" id="127ddf0de5a04167a9e427d883690ff6" style="width:105px;height:38px;float:left">
+                                            <img src="{{ URL('/code/captcha/1') }}" id="127ddf0de5a04167a9e427d883690ff6" style="width:105px;height:38px;">
                                         </a>
+                                        <input name="code" type="text" placeholder="验证码">
                                     </li>
                                 </ul>
                             </div>

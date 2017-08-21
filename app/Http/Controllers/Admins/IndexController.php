@@ -28,6 +28,7 @@ class IndexController extends Controller
     public function logout()
     {
         session(['user'=>null]);
+        session('user');
         return redirect('admin/login');
     }
 

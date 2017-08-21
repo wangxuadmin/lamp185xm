@@ -14,14 +14,9 @@ use Gregwar\Captcha\PhraseBuilder;
 
 class LoginController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
+
     public function login()
     {
-
 
         //显示用户登录页面
         return view('admins.login');

@@ -33,7 +33,7 @@
                         @endif
                     </div>
                 </div>
-                <form action="{{url('admin/user')}}" method="post" class="am-form tpl-form-border-form">
+                <form action="{{url('admin/user')}}" method="post" class="am-form tpl-form-border-form" enctype="multipart/form-data">
                     {{csrf_field()}}
                     <div class="am-form-group">
                         <label for="user-name" class="am-u-sm-12 am-form-label am-text-left">用户名 <span class="tpl-form-line-small-title"></span></label>
@@ -54,6 +54,12 @@
                         <div class="am-u-sm-12">
                             <input type="password" class="tpl-form-input am-margin-top-xs" name="password_a" placeholder="请再次输入密码">
                             <small></small>
+                        </div>
+                    </div>
+                    <div class="mws-form-row">
+                        <label class="mws-form-label">头像:</label>
+                        <div class="mws-form-item">
+                            <input type="file" name='user_pic'>
                         </div>
                     </div>
                     <div class="am-form-group">

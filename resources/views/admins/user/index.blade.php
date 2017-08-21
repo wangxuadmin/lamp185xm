@@ -29,6 +29,7 @@
                     <tr>
                         <th>ID</th>
                         <th>用户名</th>
+                        <th>头像</th>
                         <th>邮箱</th>
                         <th>手机号</th>
                         <th>操作</th>
@@ -39,6 +40,7 @@
                         <tr class="gradeX">
                             <td>{{$v->user_id}}</td>
                             <td>{{$v->user_name}}</td>
+                            <td><img src="{{$v->user_pic}}" alt="" style="width:100%;height:50px"></td>
                             <td>{{$v->user_email}}</td>
                             <td>{{$v->user_tel}}</td>
                             <td>
@@ -108,20 +110,24 @@
                     }
 
                 </style>
+                <script src="/layer/layer.js"></script>
                 <script>
-                    function delUser(id){
+
+
+                   function delUser(id){
+//                        alert(1111);
                         layer.confirm('确认删除吗？', {
                             btn: ['确定','取消'] //按钮
                         },function(){
                             $.post("{{url('admin/user')}}/"+id,{'_method':'delete','_token':'{{csrf_token()}}'},function(data){
-//                                console.log(data);
-                                if(data.status == 0){
-                                    location.href = location.href;
-                                    layer.msg('删除成功', {icon: 1});
-                                }else{
-                                    location.href = location.href;
-                                    layer.msg('删除失败', {icon: 2});
-                                }
+                                console.log(data);
+//                                if(data.status == 0){
+//                                    location.href = location.href;
+//                                    layer.msg('删除成功', {icon: 1});
+//                                }else{
+//                                    location.href = location.href;
+//                                    layer.msg('删除失败', {icon: 2});
+//                                }
 
                             });
 
@@ -129,7 +135,6 @@
 
                         });
                     }
-
 
                 </script>
                 <div class="am-u-lg-12 am-cf">

@@ -32,7 +32,7 @@ class ConfigController extends Controller
 
         $config = Config::orderBy('conf_order','asc')->get();
         
-        return view('config.list',compact('config'));
+        return view('admins.config.list',compact('config'));
     }
 
     /**
@@ -43,7 +43,7 @@ class ConfigController extends Controller
     public function create()
     {
         //
-        return view('config.add');
+        return view('admins.config.add');
     }
 
     /**
@@ -65,13 +65,13 @@ class ConfigController extends Controller
             //获取后缀
             $suffix=$request->file('conf_image')->getClientOriginalExtension();
             // 拼接图片路径
-            $request->file('conf_image')->move('./upload',$name.'.'.$suffix);
+            $request->file('conf_image')->move('./uploads',$name.'.'.$suffix);
         }
        // 存入到数据库当中
-        $input['conf_image']='/upload/'.$name.'.'.$suffix;
+        $input['conf_image']='/uploads/'.$name.'.'.$suffix;
         //$input = $request->except('_token');
         
-         $re  = config::create($input);
+        $re  = config::create($input);
          
         if($re){
             //$this->putFile();
@@ -107,7 +107,7 @@ class ConfigController extends Controller
         //
         $config = Config::find($id);
         
-        return view('config.edit',compact('config'));
+        return view('admins.config.edit',compact('config'));
     }
 
     /**

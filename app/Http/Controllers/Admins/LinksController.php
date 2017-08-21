@@ -15,11 +15,18 @@ class LinksController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
         //
-         $links = links::orderBy('links_id','asc')->get();
-        return view('links.list',compact('links'));
+        $friend = links::where('link_name','like','%'.$request['keywords'].'%')->paginate(3);
+
+        $keyword = $request->input('keywords');
+        
+                                    // 把变量传到模板中
+        return view('admins.links.list',compact('friend','keyword'));
+         
+
+       
     }
 
     /**
@@ -30,7 +37,7 @@ class LinksController extends Controller
     public function create()
     {
         //
-        return view('links.add');
+        return view('admins.links.add');
     }
 
     /**
@@ -42,7 +49,7 @@ class LinksController extends Controller
     public function store(Request $request)
     {
         //
-          $input = $request->except('_token');
+         $input = $request->except('_token');  
         
          $re  = links::create($input);
          
@@ -77,6 +84,9 @@ class LinksController extends Controller
     public function edit($id)
     {
         //
+        $links = links::find($id);
+
+        return view('admins.links.edit',compact('links'));
     }
 
     /**
@@ -89,6 +99,17 @@ class LinksController extends Controller
     public function update(Request $request, $id)
     {
         //
+         $input = $request->except('_token','_method');
+         
+         $link = links::find($id);
+        
+        $re = $link->update($input);
+        if($re){
+            //$this->putFile();
+            return redirect('admin/link');
+        }else{
+            return back()->with('msg','修改失败');
+        }
     }
 
     /**
@@ -100,5 +121,19 @@ class LinksController extends Controller
     public function destroy($id)
     {
         //
+          $re = links::where('link_id',$id)->delete();
+        if($re){
+            //$this->putFile();
+            $data = [
+                'status'=>0,
+                'msg'=>'删除成功',
+            ];
+        }else{
+            $data = [
+                'status'=>1,
+                'msg'=>'删除失败',
+            ];
+        }
+        return $data;
     }
 }

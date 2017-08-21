@@ -2,7 +2,7 @@
 
 	return array (
   'conf_title' => '你瞅啥',
-  'conf_name' => '再抽一个试试',
+  'conf_name' => '再瞅一个试试',
   'web_count' => '谷歌统计',
   'web_status' => '0',
   'seo_title' => '无兄弟 不编程',

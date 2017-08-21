@@ -1,4 +1,3 @@
-
 <?php
 
 
@@ -109,7 +108,5 @@ Route::group(['prefix'=>'admin','namespace'=>'Admins'],function(){
     Route::resource('permission','PermissionController');
 
  });
-
-
 
 

@@ -108,6 +108,8 @@ class UserController extends Controller
 //        dd($re);
 //        如果添加成功 跳转到用户列表页
         if($res){
+//            $route = \Route::current()->getActionName();
+//            dd($route);
             return redirect('admin/user');
         }else{
             return back()->with('errors','用户添加失败');
@@ -198,14 +200,6 @@ class UserController extends Controller
             $input['user_pic'] = '/upload/'.$name.'.'.$suffix;
         }
 
-
-
-        //上传头像
-//        dd($request->hasFile);
-
-
-
-
         //修改信息
         $res = User::where('user_id',$id)->update($input);
         //判断是否修改成功
@@ -220,23 +214,23 @@ class UserController extends Controller
 
     public function destroy($id)
     {
-        echo 1111;
 
-//        $res =  User::where('user_id',$id)->delete();
-//
-//        if($res){
-//            $data = [
-//                'status'=>0,
-//                'msg'=>'删除成功',
-//            ];
-//        }else{
-//            $data = [
-//                'status'=>1,
-//                'msg'=>'删除失败',
-//            ];
-//        }
-//
-//        return $data;
+
+        $res =  User::where('user_id',$id)->delete();
+
+        if($res){
+            $data = [
+                'status'=>0,
+                'msg'=>'删除成功',
+            ];
+        }else{
+            $data = [
+                'status'=>1,
+                'msg'=>'删除失败',
+            ];
+        }
+
+        return $data;
     }
 
     //给角色授权

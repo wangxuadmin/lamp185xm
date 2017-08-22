@@ -9,7 +9,7 @@ Route::group(['namespace'=>'Homes'],function(){
     //首页路由
     Route::get('/','IndexController@index');
     //列表页路由
-    Route::get('/cate/{id}','IndexController@cate');
+    Route::get('/cate','IndexController@cate');
     //详情页路由
     Route::get('/a/{id}','IndexController@article');
 });
@@ -37,14 +37,14 @@ Route::group(['namespace'=>'Homes'],function(){
 
 //Route::get('test','Admin\LoginController@test');
 //后台的登录页面路由
-//Route::get('admin/login','Admin\LoginController@login');
+Route::get('admin/login','Admins\LoginController@login');
 //验证码
 //Route::get('admin/yzm','Admin\LoginController@yzm');
 //组件验证码路由
-//Route::get('/code/captcha/{tmp}', 'Admin\LoginController@captcha');
+Route::get('/code/captcha/{tmp}', 'Admins\LoginController@captcha');
 
 //后台用户登录的业务逻辑路由
-//Route::post('admin/login','Admin\LoginController@dologin');
+Route::post('admin/login','Admins\LoginController@dologin');
 
 //加密
 //Route::get('admin/crypt','Admin\LoginController@crypt');
@@ -55,7 +55,7 @@ Route::group(['namespace'=>'Homes'],function(){
  * 后台路由组
  */
 
-//Route::group(['prefix'=>'admin','namespace'=>'Admin','middleware'=>'hasrole'],function(){
+//Route::group(['prefix'=>'admin','namespace'=>'Admins','middleware'=>'hasrole'],function(){
 Route::group(['prefix'=>'admin','namespace'=>'Admins'],function(){
     //后台首页路由
     Route::get('index','IndexController@index');
@@ -88,7 +88,7 @@ Route::group(['prefix'=>'admin','namespace'=>'Admins'],function(){
     Route::put('uploads','ArticleController@fileUploads');
 
 //    友情链接
-    Route::resource('link','FriendController');
+    Route::resource('links','linksController');
 //
 //   网站配置
     Route::resource('config','ConfigController');

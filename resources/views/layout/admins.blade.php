@@ -71,14 +71,14 @@
         <div class="left-sidebar">
             <!-- 用户信息 -->
             <div class="tpl-sidebar-user-panel">
-                <div class="tpl-user-panel-slide-toggleable">
+                <div class="tpl-user-panel-slide-toggleable" style="width:150px;height:150px">
                     <div class="tpl-user-panel-profile-picture">
 
-                        {{--<img src="{!! session('user')->admin_pic !!}" alt="">--}}
+                        <img src="{!! session('user')->user_pic !!}" style="width:150px;height:150px">
                     </div>
                     <span class="user-panel-logged-in-text">
                           <i class="am-icon-circle-o am-text-success tpl-user-panel-status-icon"></i>
-                          {{--{!! session('user')->user_name!!}--}}
+                          {!! session('user')->user_name!!}
                       </span>
                     <a href="{{url('admin/pass')}}" class="tpl-user-panel-action-link">
                     <span class="am-icon-pencil"></span>修改密码</a>

@@ -42,6 +42,8 @@ class PermissionController extends Controller
     {
 
         $input = $request->except('_token');
+
+//        dd($input);
         $res = Permission::create($input);
     //如果添加成功 跳转到权限列表页
         if($res){

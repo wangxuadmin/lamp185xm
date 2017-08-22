@@ -17,8 +17,10 @@ class LoginController extends Controller
 
     public function login()
     {
-
+//        echo \Route::current()->getActionName();
+//        die;
         //显示用户登录页面
+
         return view('admins.login');
     }
 
@@ -38,7 +40,7 @@ class LoginController extends Controller
         $builder->setMaxFrontLines(0);
         // 可以设置图片宽高及字体
 
-        $builder->build($width = 140,$height = 39, $font = null);
+        $builder->build($width = 140,$height = 50, $font = null);
         // 获取验证码的内容
         $phrase = strtoupper($builder->getPhrase());
 

@@ -18,7 +18,6 @@ class HasRole
 
         //获取当前路由对应的控制器方法
         $route = \Route::current()->getActionName();
-        //return $route;
 
         //获取当前用户对应的权限
         //获取当前用户
@@ -42,7 +41,7 @@ class HasRole
         }
         //去掉arr中重复的权限
         $newarray =array_unique($arr);
-        //dd($newarray);
+
         //判断当前路由对应的控制器方法是否在用户对应的权限中,如果在放行,若不在提示没有权限
 
         if(in_array($route,$newarray)){

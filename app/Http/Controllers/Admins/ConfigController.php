@@ -65,10 +65,10 @@ class ConfigController extends Controller
             //获取后缀
             $suffix=$request->file('conf_image')->getClientOriginalExtension();
             // 拼接图片路径
-            $request->file('conf_image')->move('./uploads',$name.'.'.$suffix);
+            $request->file('conf_image')->move('./upload',$name.'.'.$suffix);
         }
        // 存入到数据库当中
-        $input['conf_image']='/uploads/'.$name.'.'.$suffix;
+        $input['conf_image']='/upload/'.$name.'.'.$suffix;
         //$input = $request->except('_token');
         
         $re  = config::create($input);

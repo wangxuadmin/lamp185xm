@@ -40,7 +40,7 @@
                         <tr class="gradeX">
                             <td>{{$v->user_id}}</td>
                             <td>{{$v->user_name}}</td>
-                            <td><img src="{{$v->user_pic}}" alt="" style="width:100%;height:50px"></td>
+                            <td><img src="{{$v->user_pic}}" alt="" style="width:50px;height:50px"></td>
                             <td>{{$v->user_email}}</td>
                             <td>{{$v->user_tel}}</td>
                             <td>
@@ -71,9 +71,7 @@
                         padding: 0.5em 1em;
                         position: relative;
                         text-decoration: none;
-
                         display: inline-block;
-
                     }
 
                     #abc ul li span{

@@ -39,7 +39,7 @@ Route::group(['namespace'=>'Homes'],function(){
 //后台的登录页面路由
 Route::get('admin/login','Admins\LoginController@login');
 //验证码
-//Route::get('admin/yzm','Admin\LoginController@yzm');
+Route::get('admin/yzm','Admin\LoginController@yzm');
 //组件验证码路由
 Route::get('/code/captcha/{tmp}', 'Admins\LoginController@captcha');
 

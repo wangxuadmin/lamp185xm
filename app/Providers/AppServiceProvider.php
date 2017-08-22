@@ -25,7 +25,7 @@ class AppServiceProvider extends ServiceProvider
         $news=Article::orderBy('art_time','desc')->take(8)->get();
 
         // 热搜文章 5篇 hots
-        $pics=Article::orderBy('art_view','desc')->take(8)->get();
+        $pics=Article::orderBy('art_view','desc')->take(7)->get();
 
         // 友情链接 3个 links
         $links=Links::all();

@@ -45,7 +45,7 @@ class IndexController extends Controller
 
       //$arts = Article::join('category','article.cate_id','=','category.cate_id')->where('article.cate_id',$id)->paginate(2);
 
-      return view('homes.news',compact('cate','hots','arts'));
+      return view('homes.news',compact('cate','arts','hots'));
 
       //     根据ID获取分类信息
       //$cate =  Cate::find($id);
